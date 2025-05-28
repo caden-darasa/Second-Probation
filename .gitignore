@@ -1,0 +1,41 @@
+# Cocos Creator
+local/
+temp/
+library/
+build/
+settings/
+
+# Caches and logs
+.DS_Store
+Thumbs.db
+*.log
+
+# Node modules (if using npm or yarn for tools)
+node_modules/
+
+# OS-specific
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment files
+.env
+.env.*
+
+# Compiled output
+*.js.meta
+*.ts.meta
+
+# Backup files
+*.bak
+*.tmp
+~$*
+
+# Cocos Auto-generated
+import-map.json

@@ -1,0 +1,49 @@
+{
+    "levels": [
+        {
+            "row": 2,
+            "column": 2,
+            "total": 2
+        },
+        {
+            "row": 3,
+            "column": 2,
+            "total": 3
+        },
+        {
+            "row": 4,
+            "column": 3,
+            "total": 4
+        },
+        {
+            "row": 4,
+            "column": 4,
+            "total": 5
+        },
+        {
+            "row": 5,
+            "column": 4,
+            "total": 6
+        },
+        {
+            "row": 6,
+            "column": 4,
+            "total": 7
+        },
+        {
+            "row": 6,
+            "column": 5,
+            "total": 8
+        },
+        {
+            "row": 6,
+            "column": 6,
+            "total": 9
+        },
+        {
+            "row": 7,
+            "column": 6,
+            "total": 9
+        }
+    ]
+}
