@@ -1,4 +1,4 @@
-import { _decorator, Component, math, Node, SpriteFrame } from 'cc';
+import { _decorator, SpriteFrame } from 'cc';
 import { Level } from './StaticData';
 const { ccclass, property } = _decorator;
 
@@ -10,8 +10,6 @@ export class GameModel {
     animals: SpriteFrame[] = [];
     @property([SpriteFrame])
     numbers: SpriteFrame[] = [];
-
-    private finalDecks: number[];
 
     //#region Public methods
 
@@ -28,31 +26,38 @@ export class GameModel {
         }
     }
 
-    public suffle(level: Level) {
+    public suffle(level: Level): number[] {
+        let finalDecks: number[] = [];
         const maxDeck = this.foods.length;
         let totalSquare = level.row * level.column;
         let totalDeck = level.total * 2;
-        let ids: number[];
-        let curDecks: number[];
-        for (let i = 0; i < maxDeck; i++) {
-            ids.push(i);
-        }
+        let ids: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+        let curDecks: number[] = [];
 
-        // Random level.total in ids
+        // Random decks
         for (let i = 0; i < level.total; i++) {
             let index = this.randomIndex(ids);
             curDecks.push(ids[index]);
-            ids = ids.splice(index, 1);
+            curDecks.push(ids[index]);
+            ids.splice(index, 1);
         }
-        let duplicate = totalSquare / totalDeck;
-        let count = duplicate * 2 - 1;
-        for (let i = 0; i < count; i++) {
-            this.finalDecks.push(...curDecks);
+        let duplicate = totalSquare / totalDeck - 1;
+        for (let i = 0; i < duplicate; i++) {
+            finalDecks.push(...curDecks);
         }
-        let missSquare = totalSquare - this.finalDecks.length;
-        this.finalDecks.push(...curDecks, missSquare / 2);
-        this.finalDecks.push(...curDecks, missSquare / 2);
-        console.log(this.finalDecks);
+        let missSquare = totalSquare - finalDecks.length;
+        if (missSquare > 0) {
+            finalDecks.push(...curDecks.slice(0, missSquare));
+        }
+
+        // Suffle
+        const length = finalDecks.length;
+        for (let i = length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [finalDecks[i], finalDecks[j]] = [finalDecks[j], finalDecks[i]];
+        }
+
+        return finalDecks;
     }
 
     //#endregion
