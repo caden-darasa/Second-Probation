@@ -361,6 +361,14 @@
     "icon": {
       "__id__": 5
     },
+    "openSprite": {
+      "__uuid__": "e235a80a-ef35-4cb8-bbaa-ab21e82e019b@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
+    "closeSprite": {
+      "__uuid__": "c11a039b-9f39-4538-a9e9-7f08d88693af@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
     "_id": ""
   },
   {

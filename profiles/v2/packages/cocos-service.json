@@ -1,0 +1,19 @@
+{
+  "__version__": "3.0.7",
+  "builder": {
+    "options": {
+      "web-desktop": {
+        "configID": "6dcb61",
+        "services": []
+      },
+      "ios": {
+        "configID": "6dcb61",
+        "services": []
+      }
+    }
+  },
+  "builder-options": {
+    "configID": "6dcb61",
+    "services": []
+  }
+}

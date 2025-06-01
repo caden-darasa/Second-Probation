@@ -67,7 +67,7 @@ export class GameView extends Component {
             this.grid.node.addChild(item);
             let card = item.getComponent(Card);
             this.cardSpawns.push(card);
-            card.setCard(decks[i], sprites[decks[i]], cellSize);
+            card.init(decks[i], sprites[decks[i]], cellSize);
         }
     }
 

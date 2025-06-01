@@ -1,11 +1,17 @@
-import { _decorator, Component, EventTouch, Node, NodeEventType } from 'cc';
+import { _decorator, AudioClip, Component, EventTouch, Node, NodeEventType } from 'cc';
 import { Card } from './Card';
 import { GameManager } from './GameManager';
+import AudioManager from './AudioManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('PlayerController')
 export class PlayerController extends Component {
-    private readonly DELAY_HANDLE: number = 0.5;
+    private readonly DELAY_HANDLE: number = 1.5;
+
+    @property(AudioClip)
+    correctAudio: AudioClip = null;
+    @property(AudioClip)
+    incorrectAudio: AudioClip = null;
 
     private firstCard: Card;
     private secCard: Card;
@@ -39,9 +45,6 @@ export class PlayerController extends Component {
 
     private compareCard() {
         if (this.secCard != null) {
-            // compare here
-            // GameManager.instance.checkCard(this.firstCard.Id == this.secCard.Id);
-
             let firC = this.firstCard;
             let secC = this.secCard;
             if (this.firstCard.Id == this.secCard.Id) {
@@ -52,7 +55,7 @@ export class PlayerController extends Component {
             else {
                 this.scheduleOnce(() => {
                     this.delayIncorrectCard(firC, secC);
-                }, 0.5);
+                }, this.DELAY_HANDLE);
             }
 
             // reset for next turn
@@ -62,12 +65,16 @@ export class PlayerController extends Component {
     }
 
     private delayCorrectCard(fir: Card, sec: Card) {
-
+        AudioManager.instance.playSfx(this.correctAudio);
+        GameManager.instance.onCorrectCard();
+        fir.correctCard();
+        sec.correctCard();
     }
 
     private delayIncorrectCard(fir: Card, sec: Card) {
-        fir.closeCard();
-        sec.closeCard();
+        AudioManager.instance.playSfx(this.incorrectAudio);
+        fir.incorrectCard();
+        sec.incorrectCard();
     }
 
     //#endregion

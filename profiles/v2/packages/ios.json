@@ -1,0 +1,33 @@
+{
+  "__version__": "1.0.0",
+  "builder": {
+    "common": {
+      "buildPath": "project://build",
+      "outputName": "ios",
+      "mainBundleCompressionType": "merge_dep",
+      "platform": "ios"
+    },
+    "options": {
+      "ios": {
+        "packageName": "com.caden",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": false,
+          "landscapeLeft": false
+        },
+        "osTarget": {
+          "iphoneos": false,
+          "simulator": true
+        },
+        "targetVersion": "12.0",
+        "__version__": "1.0.0",
+        "developerTeam": "6FJ428Y6UV_638D635CD023000061A4EAA1D3F275C42B98C1CE"
+      }
+    }
+  }
+}

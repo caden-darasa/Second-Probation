@@ -26,7 +26,7 @@ export class GameModel {
         }
     }
 
-    public suffle(level: Level): number[] {
+    public shuffle(level: Level): number[] {
         let finalDecks: number[] = [];
         const maxDeck = this.foods.length;
         let totalSquare = level.row * level.column;

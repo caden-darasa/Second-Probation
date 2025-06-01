@@ -1,13 +1,14 @@
-import { _decorator, Component, Size, Sprite, SpriteFrame, UITransform } from 'cc';
+import { _decorator, Button, color, Component, Size, Sprite, SpriteFrame, tween, UITransform, Vec3 } from 'cc';
 import { GameManager } from './GameManager';
+import { Constant } from './Constant';
+import AudioManager from './AudioManager';
 const { ccclass, property } = _decorator;
 
 enum CardState {
     None,
     Open,
-    Opening,
-    Close,
     Closing,
+    Close,
     Done
 }
 
@@ -18,10 +19,16 @@ export class Card extends Component {
 
     @property(Sprite)
     icon: Sprite = null;
+    @property(SpriteFrame)
+    openSprite: SpriteFrame = null;
+    @property(SpriteFrame)
+    closeSprite: SpriteFrame = null;
 
     private id: number = 0;
-    private nextState: CardState = CardState.Close;
-    private curState: CardState = CardState.Close;
+    private nextState: CardState = CardState.None;
+    private curState: CardState = CardState.None;
+    private card: Sprite = null;
+    private button: Button = null;
 
     //#region Properties
 
@@ -33,31 +40,52 @@ export class Card extends Component {
 
     //#region Public methods
 
-    public setCard(id: number, img: SpriteFrame, size: number) {
-        this.nextState = CardState.Open;
+    public init(id: number, img: SpriteFrame, size: number) {
+        this.card = this.getComponent(Sprite);
         this.id = id;
         this.icon.spriteFrame = img;
         this.setDinamicTexture(size);
+        this.card.spriteFrame = this.openSprite;
+        this.scheduleOnce(() => {
+            this.nextState = CardState.Closing;
+        }, 2);
     }
 
     public onCardClick() {
-        GameManager.instance.onCardSelected(this);
-
-        if (this.curState == CardState.None || this.curState == CardState.Close) {
-            this.nextState = CardState.Opening;
+        if (this.curState == CardState.Close) {
+            AudioManager.instance.playClickButton();
+            GameManager.instance.onCardSelected(this);
+            this.nextState = CardState.Open;
         }
     }
 
-    public closeCard() {
+    public incorrectCard() {
+        this.nextState = CardState.Closing;
+    }
 
+    public correctCard() {
+        let curColor = this.card.color.clone();
+        tween(curColor).to(Constant.HIDE_TIME,
+            {
+                a: 0
+            },
+            {
+                onUpdate: () => {
+                    this.card.color = curColor;
+                },
+                onComplete: () => {
+                    this.nextState = CardState.Done;
+                }
+            }
+        ).start();
     }
 
     //#endregion
 
     //#region Lifecycle methods
 
-    start() {
-
+    onLoad(): void {
+        this.button = this.getComponent(Button);
     }
 
     update(deltaTime: number) {
@@ -65,11 +93,7 @@ export class Card extends Component {
             case CardState.Open:
                 this.curState = this.nextState;
                 this.nextState = CardState.None;
-                break;
-            case CardState.Opening:
-                this.curState = this.nextState;
-                this.nextState = CardState.None;
-                this.openCard();
+                this.handleOpenCard();
                 break;
             case CardState.Close:
                 this.curState = this.nextState;
@@ -78,6 +102,12 @@ export class Card extends Component {
             case CardState.Closing:
                 this.curState = this.nextState;
                 this.nextState = CardState.None;
+                this.handleCardClosing();
+                break;
+            case CardState.Done:
+                this.curState = this.nextState;
+                this.nextState = CardState.None;
+                this.button.interactable = false;
                 break;
         }
     }
@@ -95,8 +125,33 @@ export class Card extends Component {
         this.icon.node.setScale(scale, scale, scale);
     }
 
-    private openCard() {
+    private handleOpenCard() {
+        tween(this.node).to(Constant.FLIP_TIME, {
+            scale: new Vec3(1, 1, 1)
+        }, {
+            onUpdate: () => {
+                if (this.node.scale.x >= 0 && !this.icon.node.active) {
+                    this.icon.node.active = true;
+                    this.card.spriteFrame = this.openSprite;
+                }
+            }
+        }).start();
+    }
 
+    private handleCardClosing() {
+        tween(this.node).to(Constant.FLIP_TIME, {
+            scale: new Vec3(-1, 1, 1)
+        }, {
+            onUpdate: () => {
+                if (this.node.scale.x <= 0 && this.icon.node.active) {
+                    this.icon.node.active = false;
+                    this.card.spriteFrame = this.closeSprite;
+                }
+            },
+            onComplete: () => {
+                this.nextState = CardState.Close;
+            }
+        },).start();
     }
 
     //#endregion
