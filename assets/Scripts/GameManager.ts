@@ -1,4 +1,4 @@
-import { _decorator, Button, Component, director, JsonAsset, Node, Sprite, SpriteFrame, sys, TextAsset } from 'cc';
+import { _decorator, AudioClip, Button, Component, director, instantiate, JsonAsset, Layout, Node, ParticleAsset, ParticleSystem2D, Prefab, random, sp, Sprite, SpriteFrame, sys, TextAsset, v3, Vec3 } from 'cc';
 import { GameModel } from './GameModel';
 import { GameView } from './GameView';
 import { GameConfig, StaticData } from './StaticData';
@@ -28,6 +28,10 @@ export class GameManager extends Component {
     bgSFrames: SpriteFrame[] = [];
     @property(Sprite)
     bg: Sprite = null;
+    @property(Prefab)
+    firework: Prefab = null;
+    @property(AudioClip)
+    bump: AudioClip = null;
 
     private static _instance: GameManager = null;
     public static get instance(): GameManager {
@@ -58,9 +62,14 @@ export class GameManager extends Component {
         if (this.score >= this.total) {
             // end game
             this._isPlaying = false;
+
+            this.scheduleOnce(() => {
+                this.playFireWork();
+            }, 3);
+
             this.scheduleOnce(() => {
                 this.popupEndGame.active = true;
-            }, Constant.HIDE_TIME * 4);
+            }, 6);
         }
     }
 
@@ -77,32 +86,6 @@ export class GameManager extends Component {
         AudioManager.instance.playClickButton();
         this.scheduleOnce(() => {
             director.loadScene("Home");
-        }, 0.2);
-    }
-
-    public onNextClick() {
-        AudioManager.instance.playClickButton();
-        this.scheduleOnce(() => {
-            if (StaticData.CurrentLevel < this.model.animals.length - 1) {
-                StaticData.CurrentLevel++;
-                let save: string = "";
-
-                if (StaticData.CurrentTopic == 0)
-                    save = Constant.LEVEL_FOOD;
-                else if (StaticData.CurrentTopic == 1)
-                    save = Constant.LEVEL_ANIMAL;
-                else
-                    save = Constant.LEVEL_NUMBER;
-
-                let highestLevel = Number(sys.localStorage.getItem(save));
-                if (highestLevel > StaticData.CurrentLevel)
-                    sys.localStorage.setItem(save, StaticData.CurrentLevel.toString());
-
-                director.loadScene("Game");
-            }
-            else {
-                director.loadScene("Home");
-            }
         }, 0.2);
     }
 
@@ -126,5 +109,25 @@ export class GameManager extends Component {
 
     //#endregion
 
+    //#region Private methods
+
+    private playFireWork() {
+        let counter = 0;
+        this.schedule(() => {
+            if (counter % 3 == 0)
+                AudioManager.instance.playSfx(this.bump);
+            counter++;
+            let spawn = instantiate(this.firework);
+            this.bg.node.addChild(spawn);
+            let ranX = Math.random() * 760 - 380;
+            let ranY = Math.random() * 1200 - 600 - 200;
+            spawn.setPosition(new Vec3(ranX, ranY, 0));
+            this.scheduleOnce(() => {
+                spawn.getComponent(ParticleSystem2D).stopSystem();
+            }, 0.5);
+        }, 0.1, 20, 0);
+    }
+
+    //#endregion
 }
 

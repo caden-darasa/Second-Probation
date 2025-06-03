@@ -1,4 +1,4 @@
-import { _decorator, Button, color, Component, Size, Sprite, SpriteFrame, tween, UITransform, Vec3 } from 'cc';
+import { _decorator, Animation, Button, color, Component, Size, Sprite, SpriteFrame, tween, UITransform, Vec3 } from 'cc';
 import { GameManager } from './GameManager';
 import { Constant } from './Constant';
 import AudioManager from './AudioManager';
@@ -29,6 +29,7 @@ export class Card extends Component {
     private curState: CardState = CardState.None;
     private card: Sprite = null;
     private button: Button = null;
+    private anim: Animation = null;;
 
     //#region Properties
 
@@ -65,20 +66,23 @@ export class Card extends Component {
 
     public correctCard() {
         let curColor = this.card.color.clone();
-        tween(curColor).to(Constant.HIDE_TIME,
-            {
-                a: 0
-            },
-            {
-                onUpdate: () => {
-                    if (this.card)
-                        this.card.color = curColor;
+        this.anim.play("shake");
+        this.scheduleOnce(() => {
+            tween(curColor).to(Constant.HIDE_TIME,
+                {
+                    a: 0
                 },
-                onComplete: () => {
-                    this.nextState = CardState.Done;
+                {
+                    onUpdate: () => {
+                        if (this.card)
+                            this.card.color = curColor;
+                    },
+                    onComplete: () => {
+                        this.nextState = CardState.Done;
+                    }
                 }
-            }
-        ).start();
+            ).start();
+        }, 1);
     }
 
     //#endregion
@@ -87,6 +91,7 @@ export class Card extends Component {
 
     onLoad(): void {
         this.button = this.getComponent(Button);
+        this.anim = this.getComponent(Animation);
     }
 
     update(deltaTime: number) {
