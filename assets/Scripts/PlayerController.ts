@@ -48,14 +48,12 @@ export class PlayerController extends Component {
             let firC = this.firstCard;
             let secC = this.secCard;
             if (this.firstCard.Id == this.secCard.Id) {
-                this.scheduleOnce(() => {
-                    this.delayCorrectCard(firC, secC);
-                }, this.DELAY_HANDLE);
+                this.delayCorrectCard(firC, secC);
+
             }
             else {
-                this.scheduleOnce(() => {
-                    this.delayIncorrectCard(firC, secC);
-                }, this.DELAY_HANDLE);
+                this.delayIncorrectCard(firC, secC);
+
             }
 
             // reset for next turn
@@ -65,16 +63,20 @@ export class PlayerController extends Component {
     }
 
     private delayCorrectCard(fir: Card, sec: Card) {
-        AudioManager.instance.playSfx(this.correctAudio);
         GameManager.instance.onCorrectCard();
-        fir.correctCard();
-        sec.correctCard();
+        this.scheduleOnce(() => {
+            AudioManager.instance.playSfx(this.correctAudio);
+            fir.correctCard();
+            sec.correctCard();
+        }, this.DELAY_HANDLE);
     }
 
     private delayIncorrectCard(fir: Card, sec: Card) {
-        AudioManager.instance.playSfx(this.incorrectAudio);
-        fir.incorrectCard();
-        sec.incorrectCard();
+        this.scheduleOnce(() => {
+            AudioManager.instance.playSfx(this.incorrectAudio);
+            fir.incorrectCard();
+            sec.incorrectCard();
+        }, this.DELAY_HANDLE);
     }
 
     //#endregion

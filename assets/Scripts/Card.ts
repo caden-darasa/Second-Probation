@@ -71,7 +71,8 @@ export class Card extends Component {
             },
             {
                 onUpdate: () => {
-                    this.card.color = curColor;
+                    if (this.card)
+                        this.card.color = curColor;
                 },
                 onComplete: () => {
                     this.nextState = CardState.Done;
@@ -130,7 +131,7 @@ export class Card extends Component {
             scale: new Vec3(1, 1, 1)
         }, {
             onUpdate: () => {
-                if (this.node.scale.x >= 0 && !this.icon.node.active) {
+                if (this.node && this.node.scale.x >= 0 && !this.icon.node.active) {
                     this.icon.node.active = true;
                     this.card.spriteFrame = this.openSprite;
                 }
@@ -143,7 +144,7 @@ export class Card extends Component {
             scale: new Vec3(-1, 1, 1)
         }, {
             onUpdate: () => {
-                if (this.node.scale.x <= 0 && this.icon.node.active) {
+                if (this.node && this.node.scale.x <= 0 && this.icon.node.active) {
                     this.icon.node.active = false;
                     this.card.spriteFrame = this.closeSprite;
                 }
