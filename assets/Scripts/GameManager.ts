@@ -24,8 +24,6 @@ export class GameManager extends Component {
     audio: Sprite;
     @property(Node)
     popupEndGame: Node = null;
-    @property([SpriteFrame])
-    bgSFrames: SpriteFrame[] = [];
     @property(Sprite)
     bg: Sprite = null;
     @property(Prefab)
@@ -95,7 +93,6 @@ export class GameManager extends Component {
 
     onLoad() {
         GameManager._instance = this;
-        this.bg.spriteFrame = this.bgSFrames[StaticData.CurrentTopic];
         let level = StaticData.GameConfig.levels[StaticData.CurrentLevel];
         let sprites = this.model.getTopic(StaticData.CurrentTopic);
         let decks = this.model.shuffle(level);
