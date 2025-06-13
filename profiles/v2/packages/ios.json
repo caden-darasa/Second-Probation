@@ -8,7 +8,21 @@
       "platform": "ios",
       "name": "KidsMemory",
       "startScene": "11765374-347c-42d5-b6a8-a5de0c33c625",
-      "useSplashScreen": false
+      "useSplashScreen": false,
+      "debug": true,
+      "scenes": [
+        {
+          "url": "db://assets/Scenes/Game.scene",
+          "uuid": "a81fa468-f06e-4014-b6ad-433e1e6b217c",
+          "inBundle": false
+        },
+        {
+          "url": "db://assets/Scenes/Home.scene",
+          "uuid": "11765374-347c-42d5-b6a8-a5de0c33c625",
+          "inBundle": false
+        }
+      ],
+      "mainBundleIsRemote": false
     },
     "options": {
       "ios": {
@@ -20,12 +34,12 @@
         "orientation": {
           "portrait": true,
           "upsideDown": false,
-          "landscapeRight": false,
-          "landscapeLeft": false
+          "landscapeRight": true,
+          "landscapeLeft": true
         },
         "osTarget": {
           "iphoneos": true,
-          "simulator": true
+          "simulator": false
         },
         "targetVersion": "12.0",
         "__version__": "1.0.0",
@@ -268,6 +282,166 @@
         "osTarget": {
           "iphoneos": true,
           "simulator": true
+        },
+        "targetVersion": "12.0",
+        "__version__": "1.0.0",
+        "developerTeam": "6FJ428Y6UV_638D635CD023000061A4EAA1D3F275C42B98C1CE"
+      },
+      "1749664751084": {
+        "packageName": "com.caden.flash.memory",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": false,
+          "landscapeLeft": false
+        },
+        "osTarget": {
+          "iphoneos": true,
+          "simulator": true
+        },
+        "targetVersion": "12.0",
+        "__version__": "1.0.0",
+        "developerTeam": "6FJ428Y6UV_638D635CD023000061A4EAA1D3F275C42B98C1CE"
+      },
+      "1749718879467": {
+        "packageName": "com.caden.flash.memory",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": false,
+          "landscapeLeft": false
+        },
+        "osTarget": {
+          "iphoneos": true,
+          "simulator": false
+        },
+        "targetVersion": "12.0",
+        "__version__": "1.0.0",
+        "developerTeam": "6FJ428Y6UV_638D635CD023000061A4EAA1D3F275C42B98C1CE"
+      },
+      "1749722174719": {
+        "packageName": "com.caden.flash.memory",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": false,
+          "landscapeLeft": false
+        },
+        "osTarget": {
+          "iphoneos": true,
+          "simulator": false
+        },
+        "targetVersion": "12.0",
+        "__version__": "1.0.0",
+        "developerTeam": "6FJ428Y6UV_638D635CD023000061A4EAA1D3F275C42B98C1CE"
+      },
+      "1749723391700": {
+        "packageName": "com.caden.flash.memory",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "osTarget": {
+          "iphoneos": true,
+          "simulator": false
+        },
+        "targetVersion": "12.0",
+        "__version__": "1.0.0",
+        "developerTeam": "6FJ428Y6UV_638D635CD023000061A4EAA1D3F275C42B98C1CE"
+      },
+      "1749724082821": {
+        "packageName": "com.caden.flash.memory",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "osTarget": {
+          "iphoneos": true,
+          "simulator": false
+        },
+        "targetVersion": "12.0",
+        "__version__": "1.0.0",
+        "developerTeam": "6FJ428Y6UV_638D635CD023000061A4EAA1D3F275C42B98C1CE"
+      },
+      "1749800185983": {
+        "packageName": "com.caden.flash.memory",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "osTarget": {
+          "iphoneos": true,
+          "simulator": false
+        },
+        "targetVersion": "12.0",
+        "__version__": "1.0.0",
+        "developerTeam": "6FJ428Y6UV_638D635CD023000061A4EAA1D3F275C42B98C1CE"
+      },
+      "1749801358298": {
+        "packageName": "com.caden.flash.memory",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "osTarget": {
+          "iphoneos": true,
+          "simulator": false
+        },
+        "targetVersion": "12.0",
+        "__version__": "1.0.0",
+        "developerTeam": "6FJ428Y6UV_638D635CD023000061A4EAA1D3F275C42B98C1CE"
+      },
+      "1749803472366": {
+        "packageName": "com.caden.flash.memory",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "osTarget": {
+          "iphoneos": true,
+          "simulator": false
         },
         "targetVersion": "12.0",
         "__version__": "1.0.0",

@@ -29,7 +29,24 @@ you.
 #pragma once
 
 #import <UIKit/UIKit.h>
+// #import <MessageUI/MessageUI.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController 
++(NSString *)getIdentifier;
++(NSString *)getBundleid;
++(NSString *)getDeviceName;
++(NSString *)getClipboardContent;
++(void)createFileeee;
++(void)rotateScreen:(int)orient;
++(void)setKeepScreenOn:(BOOL)val;
++(void)setClipboardContent:(NSString *)text;
+// +(void)saveImageToPhotoLibrary:(NSString *)imageData;
 
++ (BOOL) isSupportSendSMS;
+// + (void)sendSMS: (NSString *)target withContent:(NSString *) content;
+
++(NSString *)getAppVersionCode;
++ (void) setDevicePortrait;
++ (void) setDeviceLandscape;
+@property BOOL orientationCurrent;
 @end

@@ -85,8 +85,73 @@
         "compressZip": false,
         "JobSystem": "none",
         "__version__": "1.0.2"
+      },
+      "1749664751084": {
+        "encrypted": false,
+        "xxteaKey": "dbwrDH+hFKr6rHim",
+        "compressZip": false,
+        "JobSystem": "tbb",
+        "__version__": "1.0.2"
+      },
+      "1749718879467": {
+        "encrypted": false,
+        "xxteaKey": "dbwrDH+hFKr6rHim",
+        "compressZip": false,
+        "JobSystem": "tbb",
+        "__version__": "1.0.2"
+      },
+      "1749722174719": {
+        "encrypted": false,
+        "xxteaKey": "dbwrDH+hFKr6rHim",
+        "compressZip": false,
+        "JobSystem": "tbb",
+        "__version__": "1.0.2"
+      },
+      "1749723391700": {
+        "encrypted": false,
+        "xxteaKey": "dbwrDH+hFKr6rHim",
+        "compressZip": false,
+        "JobSystem": "tbb",
+        "__version__": "1.0.2"
+      },
+      "1749724082821": {
+        "encrypted": false,
+        "xxteaKey": "dbwrDH+hFKr6rHim",
+        "compressZip": false,
+        "JobSystem": "tbb",
+        "__version__": "1.0.2"
+      },
+      "1749800185983": {
+        "encrypted": false,
+        "xxteaKey": "dbwrDH+hFKr6rHim",
+        "compressZip": false,
+        "JobSystem": "tbb",
+        "__version__": "1.0.2"
+      },
+      "1749801358298": {
+        "encrypted": false,
+        "xxteaKey": "dbwrDH+hFKr6rHim",
+        "compressZip": false,
+        "JobSystem": "tbb",
+        "__version__": "1.0.2"
+      },
+      "1749803472366": {
+        "encrypted": false,
+        "xxteaKey": "dbwrDH+hFKr6rHim",
+        "compressZip": false,
+        "JobSystem": "tbb",
+        "__version__": "1.0.2"
       }
     },
-    "__version__": "1.3.5"
+    "__version__": "1.3.5",
+    "options": {
+      "ios": {
+        "encrypted": false,
+        "xxteaKey": "dbwrDH+hFKr6rHim",
+        "compressZip": false,
+        "JobSystem": "tbb",
+        "__version__": "1.0.2"
+      }
+    }
   }
 }

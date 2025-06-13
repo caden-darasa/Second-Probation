@@ -22,7 +22,9 @@
     "mainBundleCompressionType": "merge_dep",
     "platform": "ios",
     "name": "KidsMemory",
-    "useSplashScreen": false
+    "useSplashScreen": false,
+    "debug": true,
+    "mainBundleIsRemote": false
   },
   "BuildTaskManager": {
     "taskMap": {
@@ -69,6 +71,61 @@
           "__version__": "1.3.5"
         },
         "time": "6-5-2025 13:47",
+        "dirty": false
+      },
+      "1749803472366": {
+        "type": "build",
+        "id": "1749803472366",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "6-13-2025 22:07:02 build success in 5474 ms!",
+        "options": {
+          "name": "KidsMemory",
+          "platform": "ios",
+          "buildPath": "project://build",
+          "debug": true,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "useBuiltinServer": false,
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": false,
+          "packAutoAtlas": true,
+          "startScene": "11765374-347c-42d5-b6a8-a5de0c33c625",
+          "outputName": "ios-001",
+          "scenes": [
+            {
+              "url": "db://assets/Scenes/Game.scene",
+              "uuid": "a81fa468-f06e-4014-b6ad-433e1e6b217c",
+              "inBundle": false
+            },
+            {
+              "url": "db://assets/Scenes/mygame.scene",
+              "uuid": "11765374-347c-42d5-b6a8-a5de0c33c625",
+              "inBundle": false
+            },
+            {
+              "url": "db://assets/LoadScene/PrologueScenes.scene",
+              "uuid": "0ebc0a72-e66b-4b8f-98c3-820bc8f84e18",
+              "inBundle": false
+            },
+            {
+              "url": "db://assets/LoadScene/SurvivalMode.scene",
+              "uuid": "f0b05d20-db82-4f5c-a207-af93b8b63826",
+              "inBundle": false
+            }
+          ],
+          "ios": [],
+          "packages": {},
+          "__version__": "1.3.5"
+        },
+        "time": "6-13-2025 22:06",
         "dirty": false
       }
     }
